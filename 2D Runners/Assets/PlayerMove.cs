@@ -72,7 +72,8 @@ public class PlayerMove : MonoBehaviour
     private void FixedUpdate()
     {
         _rb.AddForce(Vector2.right * (acc * Time.deltaTime));
-        
+        if (_rb.velocity.x <= 0)
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
         Jump();
     }
 
